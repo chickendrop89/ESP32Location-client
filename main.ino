@@ -133,7 +133,7 @@ void scanNetworks() {
     */
 
     if (networks == 0) {
-      Serial.println("No networks found, trying again in 5s");
+      Serial.println(F("No networks found, trying again in 5s"));
       delay(5000);
     } else {
       for (int i = 0; i < networks; ++i) {
