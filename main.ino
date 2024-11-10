@@ -25,10 +25,8 @@
 #include <BLEScan.h>
 #include <BLEAdvertisedDevice.h>
 
-BLEScan* pBLEScan;
-
-// Prepare JSONDocument
 DynamicJsonDocument doc(1024);
+BLEScan* pBLEScan;
 
 class BeaconCallback : public BLEAdvertisedDeviceCallbacks {
 public:
