@@ -192,6 +192,7 @@ void printPayload(String input_payload) {
 
 void connectToWiFi() {
   WiFi.begin(ssid, pass);
+  WiFi.setTxPower(WIFI_POWER_8_5dBm);
 
   while (WiFi.status() != WL_CONNECTED) {
     Serial.println(F("Waiting for a connection"));
