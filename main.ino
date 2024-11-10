@@ -13,6 +13,10 @@
   GNU General Public License for more details.
 */
 
+#ifndef ESP32
+  #error Please select an ESP32 (family) board
+#endif
+
 #include <preferences.h>
 #include <ArduinoJson.h>
 #include <HTTPClient.h>
