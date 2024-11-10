@@ -35,8 +35,9 @@ const char* host = "beacondb.net";
 const char* endpoint = "/v1/geolocate";
 const char* user_agent = "ESP32Location/0.1";
 
-// IANA timezone format
-const char* time_zone = "Europe/Prague";
+// Time preferences
+const char* time_zone = "Europe/Prague"; // IANA TZ format
+const char* ntp_server = "pool.ntp.org";
 
 // ISRG Root X1 certificate for beacondb.net
 // Valid until 4th June of 2035
@@ -278,7 +279,7 @@ void setup() {
 
   // Synchronize time for a secure HTTP connection
   Mycila::NTP.setTimeZone(time_zone);
-  Mycila::NTP.sync("pool.ntp.org");
+  Mycila::NTP.sync(ntp_server);
   waitForTimeSync();
 }
 
