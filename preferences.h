@@ -62,8 +62,8 @@ emyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=
 -----END CERTIFICATE-----
 )=====";
 
-const int bluetooth_scan_time = 5;           // In seconds
-const int wifi_scan_time_per_channel = 500;  // In milliseconds. wifiScanTimePerChannel * 13
+#define BLUETOOTH_SCAN_TIME 5;       // In seconds
+#define WIFI_CHANNEL_SCAN_TIME 500;  // In milliseconds. wifiScanTimePerChannel * 13
 
 // The 'BOOT' button on our board according to the pin reference
-const int boot_button_pin = 0;
+#define BOOT_BUTTON_PIN 0;

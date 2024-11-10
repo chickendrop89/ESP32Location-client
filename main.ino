@@ -76,7 +76,7 @@ void scanBeacons() {
   pBLEScan->setInterval(100);     // Interval between two consecutive scans
   pBLEScan->setWindow(50);        // Listen duration. Set to half of setInterval to lower power usage
 
-  pBLEScan->start(bluetooth_scan_time, false);
+  pBLEScan->start(BLUETOOTH_SCAN_TIME, false);
 }
 
 void scanNetworks() {
@@ -84,7 +84,7 @@ void scanNetworks() {
   JsonArray accessPoints = doc.createNestedArray("wifiAccessPoints");
 
   while (true) {
-    int networks = WiFi.scanNetworks(false, false, false, wifi_scan_time_per_channel);
+    int networks = WiFi.scanNetworks(false, false, false, WIFI_CHANNEL_SCAN_TIME);
 
     // Calculate AP frequency. Each channel is 5 MHz wide
     /* 
@@ -213,7 +213,7 @@ void waitForTimeSync() {
 
 void setup() {
   Serial.begin(115200);
-  pinMode(boot_button_pin, INPUT);
+  pinMode(BOOT_BUTTON_PIN, INPUT);
 
   // Initiate Wi-Fi
   WiFi.mode(WIFI_STA);
@@ -229,7 +229,7 @@ void setup() {
 }
 
 void loop() {
-  int button_state = digitalRead(boot_button_pin);
+  int button_state = digitalRead(BOOT_BUTTON_PIN);
 
   if (button_state == HIGH) {
     Serial.println("Scanning for wireless networks...");
