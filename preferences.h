@@ -23,7 +23,7 @@ const char* endpoint = "/v1/geolocate";
 const char* user_agent = "ESP32Location/0.1";
 
 // Time preferences
-const char* time_zone = "Europe/Prague"; // IANA TZ format
+const char* time_zone = "Europe/Prague";  // IANA TZ format
 const char* ntp_server = "pool.ntp.org";
 
 // ISRG Root X1 certificate for beacondb.net
@@ -62,8 +62,8 @@ emyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=
 -----END CERTIFICATE-----
 )=====";
 
-#define BLUETOOTH_SCAN_TIME 5;       // In seconds
-#define WIFI_CHANNEL_SCAN_TIME 500;  // In milliseconds. wifiScanTimePerChannel * 13
+#define BLUETOOTH_SCAN_TIME 5       // In seconds
+#define WIFI_CHANNEL_SCAN_TIME 500  // In milliseconds. wifiScanTimePerChannel * 13
 
 // The 'BOOT' button on our board according to the pin reference
-#define BOOT_BUTTON_PIN 0;
+#define BOOT_BUTTON_PIN 0
