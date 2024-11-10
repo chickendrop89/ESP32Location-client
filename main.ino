@@ -243,4 +243,6 @@ void loop() {
     String payload = ichnaeaRequest(parsedBody());
     printPayload(payload);
   }
+
+  delay(50);
 }
