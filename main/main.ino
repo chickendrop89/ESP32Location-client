@@ -146,22 +146,20 @@ String ichnaeaRequest(String input_json) {
     int http_code = https.POST(input_json);
 
     if (http_code > 0) {
-      if (http_code == HTTP_CODE_OK || http_code == HTTP_CODE_MOVED_PERMANENTLY) {
-        String payload = https.getString();
-        return payload;
-      } else {
-        String error = https.errorToString(http_code).c_str();
-        return error;
-      }
+      return (
+        http_code == HTTP_CODE_OK ||
+        http_code == HTTP_CODE_MOVED_PERMANENTLY) 
+          ? https.getString() : https.errorToString(http_code);
     } else {
-      String error = https.errorToString(http_code).c_str();
-      return error;
+      return https.errorToString(http_code);
     }
+
     https.end();
   }
+  return String();
 }
 
-void printPayload(String input_payload) {
+void printPayload(const String &input_payload) {
   DeserializationError error = deserializeJson(doc, input_payload);
 
   if (error) {
@@ -173,18 +171,9 @@ void printPayload(String input_payload) {
     Serial.println(input_payload);
   }
 
-  // Extract latitude and longitude
-  double latitude = doc["location"]["lat"];
-  double longitude = doc["location"]["lng"];
-  double accuracy = doc["accuracy"];
-
-  Serial.println("");
-  Serial.print("Latitude: ");
-  Serial.println(latitude, 10);
-  Serial.print("Longitude: ");
-  Serial.println(longitude, 10);
-  Serial.print("Accuracy: ");
-  Serial.println(accuracy, 10);
+  Serial.printf("Latitude: %.10f\n",  doc["location"]["lat"].as<double>());
+  Serial.printf("Longitude: %.10f\n", doc["location"]["lng"].as<double>());
+  Serial.printf("Accuracy: %.10f\n",  doc["accuracy"].as<double>());
 
   // Release memory once again
   doc.clear();
